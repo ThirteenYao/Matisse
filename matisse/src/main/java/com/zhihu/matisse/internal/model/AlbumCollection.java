@@ -46,6 +46,7 @@ public class AlbumCollection implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        System.out.println("--------------------onLoadFinished ------------------------");
         Context context = mContext.get();
         if (context == null) {
             return;
@@ -56,6 +57,7 @@ public class AlbumCollection implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        System.out.println("--------------------onLoaderReset ------------------------");
         Context context = mContext.get();
         if (context == null) {
             return;

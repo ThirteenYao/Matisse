@@ -22,8 +22,23 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application>
-        <activity android:name="com.zhihu.matisse.ui.MatisseActivity"/>
+        <activity android:name="com.zhihu.matisse.ui.MatisseActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="portrait"/>
         <activity android:name="com.zhihu.matisse.internal.ui.AlbumPreviewActivity"/>
         <activity android:name="com.zhihu.matisse.internal.ui.SelectedPreviewActivity"/>
+
+
+        <provider
+            android:name=".MatisseProvider"
+            android:authorities="com.zhihu.matisse.MatisseProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public">
+
+            </meta-data>
+        </provider>
     </application>
 </manifest>
