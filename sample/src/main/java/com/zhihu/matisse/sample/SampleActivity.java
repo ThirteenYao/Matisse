@@ -93,6 +93,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                 case R.id.dracula:
                                     Matisse.from(SampleActivity.this)
                                             .choose(MimeType.ofImage())
+                                            .showSingleMediaType(true)
                                             .theme(R.style.Matisse_Dracula)
                                             .countable(false)
                                             .maxSelectable(9)

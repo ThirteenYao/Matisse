@@ -16,12 +16,14 @@
  */
 package com.zhihu.matisse.internal.model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 
 import com.zhihu.matisse.internal.loader.AlbumLoader;
 
@@ -35,10 +37,21 @@ public class AlbumCollection implements LoaderManager.LoaderCallbacks<Cursor> {
     private AlbumCallbacks mCallbacks;
     private int mCurrentSelection;
 
+    public AlbumCollection() {
+    }
+
+    public AlbumCollection(FragmentActivity activity, AlbumCallbacks mCallbacks) {
+        mContext = new WeakReference<Context>(activity);
+        this.mCallbacks = mCallbacks;
+        mLoaderManager = activity.getSupportLoaderManager();
+
+    }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Context context = mContext.get();
         if (context == null) {
+            Log.e("=========onCreateLoader","============返回null");
             return null;
         }
         return AlbumLoader.newInstance(context);
